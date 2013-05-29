@@ -1,0 +1,9 @@
+{
+    "DOTCLOUD_DB_MYSQL_PASSWORD": "bduRUcaHER7957s6",
+    "DOTCLOUD_DB_MYSQL_PORT": "3306",
+    "DOTCLOUD_DB_MYSQL_HOST": "127.0.0.1",
+    "DOTCLOUD_DB_MYSQL_LOGIN": "wordpress",
+    "local_db_name": "wordpress_docker"
+}
+
+
