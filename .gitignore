@@ -4,3 +4,4 @@
 # Ignore paths that contain user-generated content.
 .dotcloud
 .DS_Store
+.idea
