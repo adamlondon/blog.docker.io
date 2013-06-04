@@ -5,7 +5,7 @@
 # where wordpress expects it.
 # Changes to the site should be done on the local version and then pushed.
 
-
+echo "setting up perisstent static dir"
 if [ -d ~/data/uploads ]
 then
       rm -rf ~/current/wp-content/uploads
@@ -15,6 +15,9 @@ else
 fi
 
 ln -s ~/data/uploads ~/current/wp-content/uploads
+
+rm ~/current/wp-salt.php
+ln -s ~/data/wp-salt.php ~/current/wp-salt.php
 
 # setup the databases
 php ~/code/setupdb.php
