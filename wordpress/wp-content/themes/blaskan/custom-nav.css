@@ -53,6 +53,10 @@ body {
     color: black;
 }
 
+.inline-icon {
+  margin-bottom: 3px;
+}
+
 /*Black bar*/
 
 .titlebar {
