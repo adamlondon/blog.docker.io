@@ -21,13 +21,15 @@
 		<header id="header" role="banner">
 
 			<div style="margin-left: -12px; float: left;">
-        <a href="http://www.docker.io"><img style="margin-top: 12px; height: 38px" src="<?php echo get_bloginfo('template_url') ?>/img/docker-letters-logo.gif"></a>
+        <a href="http://www.docker.io" title="Docker Homepage"><img style="margin-top: 0px; height: 60px; margin-left: 10px;" src="<?php echo get_bloginfo('template_url') ?>/img/docker-top-logo.png"></a>
       </div>
 		  
 		  <div id="topnavigation" class="navbar">
         <div class="pull-right" >
           <ul class="nav">
-            <li id="nav-introduction"><a href="http://www.docker.io/">Introduction</a></li>
+            <li id="nav-home"><a href="http://www.docker.io/">Home</a></li>
+            <li id="nav-about"><a href="http://www.docker.io/about/">About</a></li>
+            <li id="nav-community"><a href="http://www.docker.io/community/">Community</a></li>
             <li id="nav-gettingstarted"><a href="http://www.docker.io/gettingstarted/">Getting started</a></li>
             <li id="nav-documentation"><a href="http://docs.docker.io/en/latest/">Documentation</a></li>
             <li id="nav-blog" class="active"><a href="http://blog.docker.io/">Blog</a></li>
@@ -36,7 +38,7 @@
     	</div>
 
       <div class="titlebar">
-          <h1 class="pageheader">DOCKER BLOG</h1>
+          <a href="/"><h1 class="pageheader" title="Docker Blog">DOCKER BLOG</h1></a>
       </div>
 
 
