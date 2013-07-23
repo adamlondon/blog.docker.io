@@ -145,6 +145,11 @@ background-position: -59px 2px;
 
 }
 
+@media (max-width: 850px) {
+     #nav-index {
+        display: none;
+    }
+}
 
 @media (max-width: 750px) {
      #nav-community {

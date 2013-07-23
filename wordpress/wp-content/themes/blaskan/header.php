@@ -8,6 +8,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<title><?php blaskan_head_title(); ?></title>
+	<link rel="icon" type="image/png" href="<?php echo get_bloginfo('template_url') ?>/img/favicon.png" />
 	<?php wp_head(); ?>
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 </head>
