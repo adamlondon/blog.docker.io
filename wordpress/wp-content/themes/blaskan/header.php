@@ -22,7 +22,7 @@
 		<header id="header" role="banner">
 
 			<div style="margin-left: -12px; float: left;">
-        <a href="http://www.docker.io" title="Docker Homepage"><img style="margin-top: 0px; height: 60px; margin-left: 10px;" src="<?php echo get_bloginfo('template_url') ?>/img/docker-top-logo.png"></a>
+        <a href="http://www.docker.io" title="Docker Homepage"><img style="margin-top: 0px; height: 60px; width: 160px; margin-left: 10px;" src="<?php echo get_bloginfo('template_url') ?>/img/docker-top-logo.png"></a>
       </div>
 		  
 		  <div id="topnavigation" class="navbar">
