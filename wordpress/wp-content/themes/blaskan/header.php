@@ -30,8 +30,8 @@
           <ul class="nav">
             <li id="nav-home"><a href="http://www.docker.io/">Home</a></li>
             <li id="nav-about"><a href="http://www.docker.io/about/">About</a></li>
-            <li id="nav-community"><a href="http://www.docker.io/community/">Community</a></li>
             <li id="nav-gettingstarted"><a href="http://www.docker.io/gettingstarted/">Getting started</a></li>
+            <li id="nav-community"><a href="http://www.docker.io/community/">Community</a></li>
             <li id="nav-documentation"><a href="http://docs.docker.io/en/latest/">Documentation</a></li>
             <li id="nav-blog" class="active"><a href="http://blog.docker.io/">Blog</a></li>
             <li id="nav-index"><a href="http://index.docker.io/" title="Docker Image Index, find images here">INDEX <img class="inline-icon" src="<?php echo get_bloginfo('template_url') ?>/img/external-link-icon.png" title="external link"> </a></li>
