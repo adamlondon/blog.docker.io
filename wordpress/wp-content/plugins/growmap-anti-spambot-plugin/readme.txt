@@ -3,8 +3,8 @@ Contributors: commentluv
 Donate link:http://comluv.com/about/donate
 Tags: comments, anti spam, spam, spambot, gasp
 Requires at least: 2.9.2
-Tested up to: 3.5
-Stable tag: 1.2
+Tested up to: 3.6
+Stable tag: 1.4.1
 	
 Defeat automated spambots by adding a client side generated checkbox asking the comment author to confirm that they are not a spammer. 
 
@@ -67,6 +67,21 @@ Change the `checkbox name` value in the settings page to something new (like cha
 
 == ChangeLog ==
 
+= 1.4.1 =
+* updated : improved code for checkbox and label to help with styling (thanks James)
+* updated : regex for saving secret key
+* added : keep a count of bots caught
+* added : ad box below author info
+
+= 1.4 =
+* added : new extra security added with secret_key
+* added : insert commentdata as spam before wp_die so spammer can't keep submitting the same comment with new key try
+* fixed : bug with gasp_check declaration using == instead of =
+* added : keep a track of bot comments and show count in settings page (only bot comments, not forgotten checkboxes)
+
+= 1.3 =
+* fixed : prevent two checkboxes being rendered on some themes (nexus)
+
 = 1.2 =
 * allow blogger to change checkbox name in settings
 
@@ -101,9 +116,9 @@ Change the `checkbox name` value in the settings page to something new (like cha
 
 == Upgrade Notice ==
 
-= 1.2 =
+= 1.4 =
 
-* added - allow user to change gasp checkbox name 
+* added - new secret_key for combatting the new wave of automated spam bots
 
 == Configuration ==
 

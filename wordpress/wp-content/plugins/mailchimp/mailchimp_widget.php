@@ -46,7 +46,7 @@ function mailchimpSF_signup_form($args = array()) {
 	?>
 	
 <div id="mc_signup">
-	<form method="post" action="#mc_signup" id="mc_signup_form">
+	<form method="post" action="#mc_signup" id="mc_signup_form" class="form-inline">
 		<input type="hidden" id="mc_submit_type" name="mc_submit_type" value="html" />
 		<input type="hidden" name="mcsf_action" value="mc_submit_signup_form" />
 		<?php wp_nonce_field('mc_submit_signup_form', '_mc_submit_signup_form_nonce', false); ?>
@@ -152,7 +152,7 @@ function mailchimpSF_signup_form($args = array()) {
 		?>
 
 		<div class="mc_signup_submit">
-			<input type="submit" name="mc_signup_submit" id="mc_signup_submit" value="<?php echo esc_attr(get_option('mc_submit_text')); ?>" class="button" />
+			<input type="submit" name="mc_signup_submit" id="mc_signup_submit" value="<?php echo esc_attr(get_option('mc_submit_text')); ?>" class="button btn btn-default" />
 		</div><!-- /mc_signup_submit -->
 	
 	
@@ -368,7 +368,7 @@ function mailchimp_form_field($var, $num_fields) {
 			case 'number':
 			default:
 				$html .= '
-	<input type="text" size="18" value="'.esc_html($var['default']).'" name="'.esc_attr($opt).'" id="'.esc_attr($opt).'" class="mc_input"/>';
+	<input type="text" size="18" value="'.esc_html($var['default']).'" name="'.esc_attr($opt).'" id="'.esc_attr($opt).'" class="mc_input form-control" placeholder="Email-address"/>';
 				break;
 		}
 		if (!empty($var['helptext'])) {

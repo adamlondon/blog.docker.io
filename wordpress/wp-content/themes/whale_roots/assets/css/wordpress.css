@@ -1,0 +1,15 @@
+.widget h3,
+.widget .h3 {
+  font-size: 19px;
+}
+.sidebar {
+  margin-top: 20px;
+}
+.mc_merge_var,
+.mc_signup_submit {
+  display: inline-block;
+}
+ul > .cat-item {
+  list-style-type: none;
+  margin-left: -20px;
+}

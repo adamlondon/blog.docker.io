@@ -3,7 +3,7 @@
     Plugin Name: Growmap Anti Spambot Plugin
     Plugin URI: http://www.growmap.com/growmap-anti-spambot-plugin/
     Description: Very simple plugin that adds a client side generated checkbox to the comment form requesting that the user clicks it to prove they are not a spammer. Bots wont see it so their spam comment will be discarded.
-    Version: 1.2
+    Version: 1.4.1
     Author: Andy Bailey
     Author URI: http://ComLuv.com
     */
@@ -13,7 +13,8 @@
     *********************************************/
     $gasp_plugin_dir = dirname(__FILE__);
     $gasp_plugin_url = WP_PLUGIN_URL.'/'.basename(dirname(__FILE__));
-    $gasp_check == false;
+    $gasp_check = false;
+    $gasped = false;
 
 
     /*********************************************
@@ -88,8 +89,9 @@
         'urls' => '0',
         'name_words' => '0',
         'checkbox_name' => $checkbox_name,
+        'secret_key' => COOKIEHASH.md5(home_url()),
         'send_to' => 'spam',
-        'version' => '1.2'
+        'version' => '1.4.1'
         );
         $options = get_option('gasp_options',$default_options);
         // update options with new defaults if upgrading from older version
@@ -110,6 +112,11 @@
             $options['checkbox_name'] = $checkbox_name;
             update_option('gasp_options',$options);
         }
+        if(version_compare($options['version'], 1.4,'<')){
+            $options['version'] = '1.4';
+            $options['secret_key'] = COOKIEHASH.md5(home_url());
+            update_option('gasp_options',$options);
+        }
         return $options;
     }
 
@@ -117,8 +124,14 @@
     * checks the options before they are saved
     */
     function gasp_options_sanitize($newoptions){
+        //debugbreak();
         $urls = intval($newoptions['urls']);
         $name_words = intval($newoptions['name_words']);
+        if(!isset($newoptions['secret_key']) || !$newoptions['secret_key']){
+            $secret_key = COOKIEHASH.md5(home_url());
+        }
+        $secret_key = preg_replace('/[^a-zA-Z0-9]/','',$newoptions['secret_key']);
+        $newoptions['secret_key'] = $secret_key;
         $newoptions['urls'] = (string)$urls;
         $newoptions['name_words'] = (string)$name_words;
         return $newoptions;
@@ -132,6 +145,7 @@
     function gasp_check_comment($commentdata){
         //DebugBreak();
         global $gasp_check;
+        
         $options = gasp_get_options();
         if($commentdata['comment_type'] == 'pingback' || $commentdata['comment_type'] == 'trackback'){
             if($options['trackbacks'] == 'yes'){
@@ -146,6 +160,17 @@
         if(!isset($_POST[$options['checkbox_name']])){
             wp_die($options['no_checkbox_message']);
         } elseif (isset($_POST['gasp_email']) && $_POST['gasp_email'] !== ''){
+            $commentdata['comment_approved'] = 'spam';
+            wp_insert_comment($commentdata);
+            update_option('gasp_count',get_option('gasp_count',true)+1);
+            wp_die($options['hidden_email_message']);
+        }
+        // secret key check
+        $check = md5($options['secret_key'].$commentdata['comment_post_ID']);
+        if(!isset($_POST['gasp_secret']) || $_POST['gasp_secret'] != $check){
+            $commentdata['comment_approved'] = 'spam';
+            wp_insert_comment($commentdata);
+            update_option('gasp_count',get_option('gasp_count',true)+1);
             wp_die($options['hidden_email_message']);
         } 
         // check optional heuritics
@@ -181,11 +206,18 @@
     * This function handles the page for options
     */
     function gasp_options_page(){
+        //debugbreaK();
         $options = gasp_get_options();
         global $gasp_plugin_url;
+        if(empty($options['secret_key'])){
+            $options['secret_key'] = COOKIEHASH.md5(home_url());
+        } 
+        $count = get_option('gasp_count');
+        $gasp_count = $count ? $count : 0;
     ?>
     <div class="wrap">
         <h2>Growmap Anti Spambot Plugin Settings Page</h2> Version <?php echo $options['version'];?> 
+        <?php echo __('GASP has caught this many bot comments',$ab_gasp) . ' : <strong style="font-size:1.2em">'. $gasp_count . '</strong> '. __('(This does not count people who do not check the box)','ab_gasp')?>
         <form method="post" action="options.php">
             <?php settings_fields( 'gasp_options_group' );?>
             <table class="form-table postbox">
@@ -197,6 +229,12 @@
                     <td><?php _e('Checkbox Name','ab_gasp');?></td>
                     <td><input type="text" size="60" name="gasp_options[checkbox_name]" value="<?php echo $options['checkbox_name'];?>"/>
                     <p class="description"><?php _e('You can change this if you find that bots have started to target your blog again','ab_gasp');?></p>
+                    </td>
+                </tr>
+                <tr valign="top"  class="alt menu_option postbox">
+                    <td><?php _e('Secret Key','ab_gasp');?></td>
+                    <td><input type="text" size="60" name="gasp_options[secret_key]" value="<?php echo $options['secret_key'];?>"/>
+                    <p class="description"><?php _e('this another bit of security to secure your comment form. You can change this to any value (letters and numbers only)','ab_gasp');?></p>
                     </td>
                 </tr>
                 <tr valign="top"  class="alt menu_option postbox">
@@ -285,14 +323,30 @@
                     Some of my other plugins : 
                 </td>
                 <td>
-                    <ul><li><a target="_blank" href="http://www.commentluv.com/"><img title="Download CommentLuv Premium today!"src="<?php echo $gasp_plugin_url;?>/commentluv-plus-logo.png"/></a>
+                    <ul><li><a target="_blank" href="http://www.commentluv.com/?utm_source=gasp&utm_medium=settingspage&utm_campaign=freeplugin"><img title="Download CommentLuv Premium today!"src="<?php echo $gasp_plugin_url;?>/commentluv-plus-logo.png"/></a>
                             <br />A fantastically powerful new plugin that combines 8 premium plugins in to 1. It has advanced heuristics for anti spam (like this plugin but even more powerful!). It can help your posts go viral, allow dofollow, keywordname, twitterlink and much much more! <a href="http://www.commentluv.com" target="_blank">Click here to see the video</a></li>
                         <li><a href="http://wordpress.org/extend/plugins/twitterlink-comments/">TwitterLink Comments</a>
                             <br />Add an extra field to your comment form to allow your visitors to leave their twitter username and have it displayed along with their comment. All without having to edit your theme.</li>
                     </ul>
                 </td>
             </tr>
-
+            <tr>
+                <td colspan="4">
+                    <?php
+                    //debugbreak();
+                        include_once(ABSPATH.WPINC.'/feed.php');
+                        $rss = fetch_feed('http://comluv.com/category/ads/feed/');
+                        if(!is_wp_error($rss)) {
+                            $maxitems = $rss->get_item_quantity(2);
+                            $rssitems = $rss->get_items(0,$maxitems);
+                        }
+                        foreach($rssitems as $item){
+                            echo '<div><a href="'.esc_url( $item->get_permalink() ).'">'.esc_html($item->get_title()).'</a>';
+                            echo '<p>'.$item->get_content().'</p></div>';
+                        }
+                    ?>
+                </td>
+            </tr>
         </table>
 
     </div>
@@ -308,20 +362,27 @@
     * Adds javascript to create a checkbox on the comment form
     */
     function gasp_add_checkbox(){
-        if(!is_user_logged_in()){
+        global $gasped, $post;
+         
+        if(!is_user_logged_in() && !$gasped){
+            //debugbreak();
             $options = gasp_get_options();
+            $gasp_secret = md5($options['secret_key'].$post->ID);
+            echo '<input type="hidden" name="gasp_secret" value="'.$gasp_secret.'"/>';
             echo '<p id="gasp_p" style="clear:both;"></p>';
             echo '<script type="text/javascript">
-            //v1.2
+            //v1.4.1
             var gasp_p = document.getElementById("gasp_p");
             var gasp_cb = document.createElement("input");
             var gasp_text = document.createTextNode(" '.$options['checkbox_label'].'");
             gasp_cb.type = "checkbox";
             gasp_cb.id = "'.$options['checkbox_name'].'";
             gasp_cb.name = "'.$options['checkbox_name'].'";
-            gasp_cb.style.width = "25px";
             gasp_p.appendChild(gasp_cb);
-            gasp_p.appendChild(gasp_text);
+            var gasp_label = document.createElement("label");
+            gasp_p.appendChild(gasp_label);
+            
+            gasp_label.appendChild(gasp_text);
             var frm = gasp_cb.form;
             frm.onsubmit = gasp_it;
             function gasp_it(){
@@ -334,6 +395,7 @@
             </script>
             <noscript>you MUST enable javascript to be able to comment</noscript>
             <input type="hidden" id="gasp_email" name="gasp_email" value="" />';
+            $gasped = true;
         } else {
             echo '<!-- no checkbox needed by Growmap Anti Spambot Plugin for logged on user -->';
         }
