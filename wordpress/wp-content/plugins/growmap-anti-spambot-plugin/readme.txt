@@ -4,22 +4,36 @@ Donate link:http://comluv.com/about/donate
 Tags: comments, anti spam, spam, spambot, gasp
 Requires at least: 2.9.2
 Tested up to: 3.6
-Stable tag: 1.4.1
+Stable tag: 1.5.2
 	
-Defeat automated spambots by adding a client side generated checkbox asking the comment author to confirm that they are not a spammer. 
+Defeat automated spambots (even the new 'learning' bots with dynamically named hidden fields) by adding a client side generated checkbox.
 
 == Description ==
+
+[Upgrade to CommentLuv Pro For More Anti-Spam Heuristics](http://www.commentluv.com "Upgrade to CommentLuv Pro")
 
 This plugin will add a client side generated checkbox to your comment form asking users to confirm that they are not a spammer.
 It is a lot less trouble to click a box than it is to enter a captcha and because the box is genereated via client side javascript that bots cannot see, it should stop 99% of all automated spam bots.
 
 A check is made that the checkbox has been checked before the comment is submitted so there's no chance that a comment will be lost if it's being submitted by legitimate human user.
 
+To combat the new 'learning' bots, this plugin adds dynamically named fields to the comment form so each post has a differently named field and value.
+
+You can set the maximum amount of comments a user can have in the moderation queue to protect you from comment floods (provided you haven't approved any of the spammers comments before)
+
 You can get support and see this plugin in action at [Growmap](http://www.growmap.com/growmap-anti-spambot-plugin/ "Growmap Internet Strategist")
+
+This is provided for free by [Andy Bailey](http://comluv.com "Andy Bailey @ ComLuv - The CommentLuv Network")
+
+(please remember to delete your cache when you upgrade or change any settings if you are using a cache plugin)
+
+[youtube http://www.youtube.com/watch?v=MVZ6pN8FFfw]
 
 Translations : 
 
 French : [Frederic](http://www.fredserva.fr "French Translation")
+
+Spanish : [Ramon](http://apasionados.es/ "Spanish Translation")
 
 == Installation ==
 
@@ -56,6 +70,13 @@ You can download any of the number of trackback validation plugins which will ch
 
 Sometimes scripts can semi automate spam and they know what the checkbox name is so they can automatically tick it.
 Change the `checkbox name` value in the settings page to something new (like change the number) so the autmoated systems don't know what the checkbox is called any more
+You can also change the secret key value and set the maximum comments in moderation to a lower number.
+
+= everyone is getting the error message = 
+
+if you have a cache plugin, please clear all caches.
+
+also, you can try saving the settings again to reset all the variables
 
 == Screenshots ==
 
@@ -66,6 +87,36 @@ Change the `checkbox name` value in the settings page to something new (like cha
 3. error message
 
 == ChangeLog ==
+
+= 1.5.2 =
+
+* updated : set checkbox as descendant of label so users can click the label to tick the box (thanks Anthony T)
+* updated : added a link back to the post with a query arg to fix pages that were expired and had old form fields on the die message
+* updated : change refer check logic
+* updated : add error codes to error messages
+* updated : allow user to not use secret_key (set as no by default)
+* fixed : max_mod kept reverting back to 3 due to get_options not saving version number
+* updated : added warning message about clearing the cache if a user upgrades or changes settings and has a cache plugin installed
+
+= 1.5.1 =
+
+* updated : set the max_mod value during install if it doesn't exist
+* updated : new readme
+
+= 1.5 =
+
+* updated : max_mod is set at 3 by default
+* updated : readme.txt updated
+
+= 1.4.3 =
+* updated : allow option of using referer check or not in settings
+* updated : use dynamic input field name so each post uses a different value and can't be learned for the whole site
+* added : allow user to set maximum comments that can be held in moderation before new comments can be added (from CommentLuv Premium)
+
+= 1.4.2 =
+* added : add a referer check to start of check_comment
+* updated : notices about undefined index when debug turned on
+* updated : check $_SERVER['HTTP_REFERER'] is set and die if not
 
 = 1.4.1 =
 * updated : improved code for checkbox and label to help with styling (thanks James)
@@ -116,9 +167,9 @@ Change the `checkbox name` value in the settings page to something new (like cha
 
 == Upgrade Notice ==
 
-= 1.4 =
+= 1.5.2 =
 
-* added - new secret_key for combatting the new wave of automated spam bots
+* fix - set secret key check to no by default and added nocache url and error codes to error messages
 
 == Configuration ==
 
