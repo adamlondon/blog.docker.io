@@ -7046,22 +7046,64 @@ body {
 
 .social .twitter,
 .social .github,
-.social .googleplus {
+.social .googleplus,
+.social .facebook,
+.social .slideshare,
+.social .linkedin,
+.social .flickr,
+.social .youtube,
+.social .reddit {
   display: inline-block;
-  width: 35px;
-  height: 35px;
-  margin-right: 10px;
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
   overflow: hidden;
   text-indent: 9999px;
-  background: url("https://www.docker.io/static/img/footer-links.png") no-repeat transparent;
+  background: url("http://www.docker.io/static/img/social/docker_social_logos.png") no-repeat transparent;
+}
+
+.social :hover {
+  -webkit-transform: rotate(-10deg);
+     -moz-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+       -o-transform: rotate(-10deg);
+          transform: rotate(-10deg);
 }
 
 .social .twitter {
-  background-position: 0 2px;
+  background-position: -160px 0;
+}
+
+.social .reddit {
+  background-position: -256px 0;
 }
 
 .social .github {
-  background-position: -59px 2px;
+  background-position: -64px 0;
+}
+
+.social .googleplus {
+  background-position: -96px 0;
+}
+
+.social .facebook {
+  background-position: 0 0px;
+}
+
+.social .slideshare {
+  background-position: -128px 0;
+}
+
+.social .youtube {
+  background-position: -192px 0;
+}
+
+.social .flickr {
+  background-position: -32px 0;
+}
+
+.social .linkedin {
+  background-position: -224px 0;
 }
 
 form table th {
