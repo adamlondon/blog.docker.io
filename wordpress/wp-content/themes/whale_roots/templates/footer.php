@@ -13,25 +13,6 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-2 tbox footerlist">
-                        <h4>Community</h4>
-                        <ul class="unstyled">
-                            <li><a href="/community/" title="Community">Community</a></li>
-                            <li><a href="/events/" title="Events and meetups">Events</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-sm-2 tbox footerlist">
-                        <h4>About</h4>
-                        <ul class="unstyled">
-
-                            <li><a href="/news/" title="News and updates">News</a></li>
-                            <li><a href="/press/" title="Docker in the media">Press</a></li>
-                            <li><a href="/team/" title="The team behind">Team</a></li>
-
-                        </ul>
-                    </div>
-
                 </div>
             </div>
             <!-- end of footer -->

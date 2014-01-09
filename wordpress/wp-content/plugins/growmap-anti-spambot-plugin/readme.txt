@@ -3,8 +3,8 @@ Contributors: commentluv
 Donate link:http://comluv.com/about/donate
 Tags: comments, anti spam, spam, spambot, gasp
 Requires at least: 2.9.2
-Tested up to: 3.6
-Stable tag: 1.5.2
+Tested up to: 3.7
+Stable tag: 1.5.4
 	
 Defeat automated spambots (even the new 'learning' bots with dynamically named hidden fields) by adding a client side generated checkbox.
 
@@ -20,6 +20,8 @@ A check is made that the checkbox has been checked before the comment is submitt
 To combat the new 'learning' bots, this plugin adds dynamically named fields to the comment form so each post has a differently named field and value.
 
 You can set the maximum amount of comments a user can have in the moderation queue to protect you from comment floods (provided you haven't approved any of the spammers comments before)
+
+*new! - prevent spambots from thinking they got links on your site by removing all links from comments that are waiting for moderation
 
 You can get support and see this plugin in action at [Growmap](http://www.growmap.com/growmap-anti-spambot-plugin/ "Growmap Internet Strategist")
 
@@ -87,6 +89,15 @@ also, you can try saving the settings again to reset all the variables
 3. error message
 
 == ChangeLog ==
+
+= 1.5.4 =
+
+* added : remove all links from a comment if it is in moderation. (prevents autospam bots like scrapebox from thinking they got through with a link)
+* updated : compatibility with 3.7
+
+= 1.5.3 =
+
+* updated : $count is checked if it has a value before checking if it is greater than max_mod to hopefully elimate the problem of random users being told they have too many comments in moderation
 
 = 1.5.2 =
 
@@ -167,9 +178,9 @@ also, you can try saving the settings again to reset all the variables
 
 == Upgrade Notice ==
 
-= 1.5.2 =
+= 1.5.4 =
 
-* fix - set secret key check to no by default and added nocache url and error codes to error messages
+* added - prevent autospam bots from thinking they got through by removing all links from a moderated comment until it is approved
 
 == Configuration ==
 

@@ -5,3 +5,6 @@
 .dotcloud
 .DS_Store
 .idea
+wordpress/wp-content/themes/whale_roots/node_modules/
+wp-salt.php
+

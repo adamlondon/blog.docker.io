@@ -3,7 +3,7 @@
 Plugin Name: Growmap Anti Spambot Plugin
 Plugin URI: http://www.growmap.com/growmap-anti-spambot-plugin/
 Description: Very simple plugin that adds a client side generated checkbox to the comment form requesting that the user clicks it to prove they are not a spammer. Bots wont see it so their spam comment will be discarded.
-Version: 1.5.2
+Version: 1.5.4
 Author: Andy Bailey
 Author URI: http://ComLuv.com
 */
@@ -38,10 +38,40 @@ add_action('init','gasp_init');
 *		internal functions
 *********************************************/
 
+/**
+* strip the links out of the comment text if moderated comment
+* @param string $commenttext
+* @return string
+* since 1.5.4
+*/
+function gasp_strip_tags($commenttext){
+    global $comment;
+    if($comment->comment_approved == '0'){
+        return strip_tags($commenttext);
+    }
+    return $commenttext;
+}
+/**
+* strip the link off the name if comment is in moderation
+* @param string $authorlink
+* @return string
+*/
+function gasp_get_comment_author($authorlink){
+    global $comment;
+    if($comment->comment_approved == '0'){
+        return get_comment_author();
+    }
+    return $authorlink;
+}
 /** gasp_init
 */
 function gasp_init(){
     load_plugin_textdomain( 'ab_gasp', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+    if(is_singular()){
+        // filters for single posts to remove links from moderated comments
+        add_filter('comment_text','gasp_strip_tags',99);
+        add_filter('get_comment_author_link','gasp_get_comment_author',99);
+    }
 }
 /** gasp_admin_init
 * Sets up the admin pages and settings
@@ -219,7 +249,7 @@ function gasp_check_comment($commentdata){
     }
     if(isset($options['max_mod']) && $options['max_mod'] != 'disabled'){
         $count = get_comments(array('status'=>'hold','author_email'=>$commentdata['comment_author_email'],'count'=>true));
-        if($count > $options['max_mod']){
+        if($count && $count > $options['max_mod']){
             wp_die(__('You already have too many comments in moderation. Please wait until your existing comments have been approved before attempting to leave more comments','ab_gasp').$nocache_return.'<p>Error Code: mc'.$count.'mm0'.$options['max_mod']);
         }
     }
