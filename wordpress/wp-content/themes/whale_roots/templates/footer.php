@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row footer">
                     <div class="col-md-8 col-sm-8 tbox">
-                        Docker is an open source project, sponsored by  <a href="https://docker.com">Docker</a>, under the <a href="https://github.com/dotcloud/docker/blob/master/LICENSE" title="Docker licence, hosted in the Github repository">apache 2.0 licence</a>
+                        Docker is an open source project, sponsored by  <a href="http://www.docker.com">Docker</a>, under the <a href="https://github.com/dotcloud/docker/blob/master/LICENSE" title="Docker licence, hosted in the Github repository">apache 2.0 licence</a>
 
                         <div class="social links">
                             <a title="Docker on Twitter" class="twitter" href="http://twitter.com/docker">Twitter</a>

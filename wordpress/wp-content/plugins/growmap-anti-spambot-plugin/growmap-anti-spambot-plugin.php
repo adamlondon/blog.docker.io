@@ -3,7 +3,7 @@
 Plugin Name: Growmap Anti Spambot Plugin
 Plugin URI: http://www.growmap.com/growmap-anti-spambot-plugin/
 Description: Very simple plugin that adds a client side generated checkbox to the comment form requesting that the user clicks it to prove they are not a spammer. Bots wont see it so their spam comment will be discarded.
-Version: 1.5.4
+Version: 1.5.5
 Author: Andy Bailey
 Author URI: http://ComLuv.com
 */
@@ -122,7 +122,7 @@ function gasp_get_options(){
         'checkbox_name' => $checkbox_name,
         'secret_key' => COOKIEHASH.md5(home_url()),
         'send_to' => 'spam',
-        'version' => '1.5.2'
+        'version' => '1.5.5'
     );
     $options = get_option('gasp_options',$default_options);
     // update options with new defaults if upgrading from older version

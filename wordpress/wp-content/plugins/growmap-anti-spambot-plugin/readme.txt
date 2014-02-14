@@ -3,8 +3,8 @@ Contributors: commentluv
 Donate link:http://comluv.com/about/donate
 Tags: comments, anti spam, spam, spambot, gasp
 Requires at least: 2.9.2
-Tested up to: 3.7
-Stable tag: 1.5.4
+Tested up to: 3.8
+Stable tag: 1.5.5
 	
 Defeat automated spambots (even the new 'learning' bots with dynamically named hidden fields) by adding a client side generated checkbox.
 
@@ -36,6 +36,8 @@ Translations :
 French : [Frederic](http://www.fredserva.fr "French Translation")
 
 Spanish : [Ramon](http://apasionados.es/ "Spanish Translation")
+
+Dutch : [Onno](http://blog.trainertops.nl/ "Dutch translation")
 
 == Installation ==
 
@@ -89,6 +91,11 @@ also, you can try saving the settings again to reset all the variables
 3. error message
 
 == ChangeLog ==
+
+= 1.5.5 =
+
+* updated : update readme to show compatibility with wp 3.8
+* added : Dutch language added (thanks Onno Schuit)
 
 = 1.5.4 =
 
