@@ -1,8 +1,32 @@
 
 <div id="wrap">
-<header class="navbar navbar-static-top navbar-inner navbar-fixed-top" role="banner">
 
+
+<div id="topmostnav" class="navbar navbar-static-top public">
+    <div class="container">
+        <div class="span12">
+            <a href="<?php echo get_settings('home'); ?>" title="Homepage">
+                <div class="brand logo"><img src="wp-content/themes/whale_roots/assets/img/docker-logo-loggedout.png"> </div>
+            </a>
+            <ul class="nav">
+                <li class=""><a href="https://www.docker.com/whatisdocker/" title="What is Docker">What is Docker?</a></li>
+                <li class=""><a href="https://www.docker.com/resources/usecases/" title="Use Cases">Use Cases</a></li>
+                <li class=""><a href="https://www.docker.com/resources/tutorial/" title="Try It!">Try It!</a></li>
+				<li class=""><a href="https://docs.docker.com" title="Install &amp; Docs">Install &amp; Docs</a></li>
+                <li class=""><a href="https://registry.hub.docker.com" title="Browse">Browse</a></li>
+                
+            </ul>
+            <div id="usernav" class="pull-right">
+                <a href="https://hub.docker.com/account/login/" class="btn nav-button2">Log In</a>
+                <a href="https://hub.docker.com/account/signup/" class="btn nav-button1">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php /* ?>
       <div class="container">
+	  
         <a href="<?php echo get_settings('home'); ?>" title="Homepage"><div class="brand logo"><img src="http://www.docker.io/static/img/docker-top-logo.png"> </div></a>
         <div class="navbar-header">
 
@@ -31,5 +55,6 @@
             endif;
           ?>
         </nav>
-      </div>
-</header>
+
+      </div><?php */ ?>
+

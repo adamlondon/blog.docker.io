@@ -1705,21 +1705,21 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .form-control {
-  display: block;
-  width: 100%;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #555555;
-  vertical-align: middle;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-          transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+display: block;
+width: 100%;
+height: 34px;
+padding: 0 14px;
+font-size: 14px;
+line-height: 1.7;
+color: #394d54;
+vertical-align: middle;
+background-color: #ffffff;
+border: 1px solid #cccccc;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
 .form-control:focus {
@@ -6983,17 +6983,19 @@ body {
 /* Wrapper for page content to push down footer */
 
 #wrap {
-  height: auto !important;
+  /*height: auto !important;
   height: 100%;
   min-height: 100%;
-  margin: 0 auto -350px;
+  margin: 0 auto -350px;*/
+  margin: 0 auto -379px;
 }
 
 /* Set the fixed height of the footer here */
 
 #push,
 #footer {
-  height: 350px;
+  height: 379px;
+  background: #253237;
 }
 
 #footer .footer {
@@ -7033,77 +7035,6 @@ body {
   padding-left: 30px;
   margin-top: 20px;
   background-color: white;
-}
-
-/* =======================
-   Social footer
-======================= */
-
-.social {
-  margin-top: 15px;
-  margin-left: 0;
-}
-
-.social .twitter,
-.social .github,
-.social .googleplus,
-.social .facebook,
-.social .slideshare,
-.social .linkedin,
-.social .flickr,
-.social .youtube,
-.social .reddit {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  margin-right: 5px;
-  overflow: hidden;
-  text-indent: 9999px;
-  background: url("http://www.docker.io/static/img/social/docker_social_logos.png") no-repeat transparent;
-}
-
-.social :hover {
-  -webkit-transform: rotate(-10deg);
-     -moz-transform: rotate(-10deg);
-      -ms-transform: rotate(-10deg);
-       -o-transform: rotate(-10deg);
-          transform: rotate(-10deg);
-}
-
-.social .twitter {
-  background-position: -160px 0;
-}
-
-.social .reddit {
-  background-position: -256px 0;
-}
-
-.social .github {
-  background-position: -64px 0;
-}
-
-.social .googleplus {
-  background-position: -96px 0;
-}
-
-.social .facebook {
-  background-position: 0 0px;
-}
-
-.social .slideshare {
-  background-position: -128px 0;
-}
-
-.social .youtube {
-  background-position: -192px 0;
-}
-
-.social .flickr {
-  background-position: -32px 0;
-}
-
-.social .linkedin {
-  background-position: -224px 0;
 }
 
 form table th {
@@ -7662,4 +7593,312 @@ blockquote p,
 figure.alignnone {
   margin-right: 0;
   margin-left: 0;
+}
+
+/* Styles for new design, June 2014. May want to move these to .less at some point */
+
+/* copied from index */
+.navbar .nav {
+position: relative;
+left: 0;
+display: block;
+float: left;
+margin: 0 10px 0 0;
+}
+
+#topmostnav {
+  border-bottom: 1px solid #dbdde0;
+}
+#topmostnav li a {
+  font-size: 14px;
+  font-weight: 700;
+  color: #253237;
+  line-height: 55px;
+}
+#topmostnav li a:hover {
+  font-size: 14px;
+  font-weight: 700;
+  color: #24b8eb;
+}
+#topmostnav ul li {
+  margin-left: 40px;
+}
+#topmostnav ul li:first-child {
+  margin-left: 0;
+}
+#topmostnav .brand {
+  margin: 8px 20px 0 8px;
+  padding: 0;
+}
+#topmostnav.public {
+  border-bottom: none;
+  height: 74px;
+}
+#topmostnav.public ul li {
+  margin-left: 30px;
+  padding-top: 32px;
+}
+#topmostnav.public ul li:first-child {
+  margin-left: 0;
+}
+#topmostnav.public li a {
+  line-height: 1;
+}
+#topmostnav.public #usernav .btn {
+  margin: 20px 0 0 13px;
+}
+#topmostnav.public .brand {
+  padding-left: 10px;
+  margin: 16px 35px 0 0;
+}
+.btn {
+  padding: 6px 15px;
+  line-height: 20px;
+}
+.nav-button1 {
+  padding: 5px 24px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #ff8100;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+.nav-button1:hover,
+.nav-button1:active,
+.nav-button1:focus {
+  background-color: #ffa141;
+}
+.btn.nav-button2 {
+  border: 1px solid #253237 !important;
+  padding: 5px 24px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  color: #253237;
+}
+.btn.nav-button2:hover,
+.btn.nav-button2:active,
+.btn.nav-button2:focus {
+  border-color: #24b8eb !important;
+  font-size: 14px;
+  font-weight: 700;
+  color: #24b8eb;
+}
+
+/* copied from www.docker.com */
+#footer {
+  height: 379px;
+  background: #253237;
+}
+#footer {
+  padding-top: 36px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Social */
+}
+#footer .copyright {
+  margin-top: 50px;
+}
+#footer .primary-button:hover {
+  color: #eeeeee;
+  text-decoration: none;
+}
+#footer ul {
+  margin-top: 0px;
+}
+#footer form {
+  display: inline-block;
+  width: 220px;
+}
+#footer .search span {
+  margin-bottom: 5px;
+  display: block;
+}
+#footer .search label {
+  display: none;
+}
+#footer .search ul {
+  display: none;
+}
+#footer .search form input {
+  background: #253237;
+  border-color: #ade5f9;
+  width: 248px;
+  height: 37px;
+  margin: 0px 0px 12px 0px !important;
+}
+#footer .search form button {
+  position: absolute;
+  display: block;
+  margin: -44px 220px;
+  background: none !important;
+  border: none;
+  outline: none;
+  color: #999999;
+}
+#footer .search form button:hover {
+  color: #eeeeee !important;
+}
+#footer a {
+  color: #949da7;
+}
+#footer a:hover {
+  text-decoration: none;
+  color: #eeeeee;
+}
+#footer .social li a {
+  padding-left: 28px;
+}
+#footer .social .blog {
+  background: url(../img/footer/docker-blog-24.png) no-repeat;
+  background-position: 0px -3px;
+}
+#footer .social .twitter {
+  background: url(../img/footer/twitter-24.png) no-repeat;
+  background-position: 0px -3px;
+}
+#footer .social .googleplus {
+  background: url(../img/footer/googleplus-24.png) no-repeat;
+  background-position: 0px -3px;
+}
+#footer .social .facebook {
+  background: url(../img/footer/facebook-24.png) no-repeat;
+  background-position: 0px -3px;
+}
+#footer .social .youtube {
+  background: url(../img/footer/youtube-24.png) no-repeat;
+  background-position: 0px -3px;
+}
+#footer .social .slideshare {
+  background: url(../img/footer/slideshare-24.png) no-repeat;
+  background-position: 0px -3px;
+}
+/* Social Links */
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  #footer .social .blog {
+    background: url(../img/footer/docker-blog-48.png) no-repeat;
+    background-size: 24px;
+    background-position: 0px -3px;
+  }
+  #footer .social .twitter {
+    background: url(../img/footer/twitter-48.png) no-repeat;
+    background-size: 24px;
+    background-position: 0px -3px;
+  }
+  #footer .social .googleplus {
+    background: url(../img/footer/googleplus-48.png) no-repeat;
+    background-size: 24px;
+    background-position: 0px -3px;
+  }
+  #footer .social .facebook {
+    background: url(../img/footer/facebook-48.png) no-repeat;
+    background-size: 24px;
+    background-position: 0px -3px;
+  }
+  #footer .social .youtube {
+    background: url(../img/footer/youtube-48.png) no-repeat;
+    background-size: 24px;
+    background-position: 0px -3px;
+  }
+  #footer .social .slideshare {
+    background: url(../img/footer/slideshare-48.png) no-repeat;
+    background-size: 24px;
+    background-position: 0px -3px;
+  }
+}
+.footer-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: #ade5f9;
+  line-height: 1.8;
+}
+.primary-button {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+}
+.grey-body {
+font-size: 14px;
+font-weight: 400;
+color: #949da7;
+}
+[class*="span"] {
+float: left;
+min-height: 1px;
+margin-left: 20px;
+}
+ul.unstyled, ol.unstyled {
+margin-left: 0;
+list-style: none;
+padding: 0;
+}
+input[type="text"] {
+transition: border linear .2s, box-shadow linear .2s;
+}
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=3.1.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=3.1.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=3.1.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=3.1.0') format('truetype'), url('../fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"], [class*=" icon-"] {
+display: inline;
+width: auto;
+height: auto;
+line-height: normal;
+vertical-align: baseline;
+background-image: none;
+background-position: 0% 0%;
+background-repeat: repeat;
+margin-top: 0;
+font-family: FontAwesome;
+font-weight: normal;
+font-style: normal;
+text-decoration: inherit;
+-webkit-font-smoothing: antialiased;
+}
+.icon-arrow-right:before {
+content: "\f061";
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+text-decoration: inherit;
+display: inline-block;
+speak: none;
+}
+.pagination-right {
+text-align: right;
+}
+
+/* overrides */
+body {
+	/*height: 100%;*/
+	margin-top: 0;
+	background-color: #FFF;
+}
+
+.navbar .nav > li > a {
+  padding: 0;
+  color: #777777;
+  text-shadow: none;
+}
+#footer .container {width: 940px;}
+#footer .span3 {width: 220px;}
+#footer .span6 {width: 460px;}
+#footer .row {
+	margin: 0 0 0 -20px;
+}
+#footer li {line-height: 1.7;}
+.navbar .nav {margin-right: 0;}
+#topmostnav.public .brand {
+	padding-left: 0;
+	margin-right: 20px;
+	}
+#topmostnav.public #usernav .btn {
+	margin-top: 24px;
 }
